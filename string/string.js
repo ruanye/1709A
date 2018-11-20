@@ -34,7 +34,7 @@ cloneObj = JSON.parse(JSON.stringify(obj));
 //上面这种方式不能拷贝函数 undefined...
 function deepClone(obj){
    if(typeof obj !=='object')return obj;
-   if(typeof obj ===null)return null;
+   if(obj ===null)return null;
    let cloneObj = new obj.constructor();//保留继承关系
    for(key in obj){
     cloneObj[key]=typeof obj[key]==='object'?deepClone(obj[key]):obj[key]  
