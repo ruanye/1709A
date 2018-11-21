@@ -44,9 +44,17 @@ function deepClone(obj){
    }
    return cloneObj;
 }
-console.log(deepClone(obj));
+let con = deepClone(obj);
+con.name= 'lo'
+console.log(obj)
 
-
+let obj1 ={name:'lili'};
+let c ={};
+for (key in obj1){
+   c[key] = obj1[key]
+}
+c.name= 'l';
+console.log(obj1);
 
 
 

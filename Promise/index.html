@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+    <style>
+        .ball {
+            position: relative;
+
+            width: 80px;
+            height: 80px;
+            background: yellowgreen;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    
+    let p=new Promise()
+
+
+     
+    三个小球，第一个球运动结束之后，第二个球运动，第二个球运动完之后，第三个球运动
+    <div>
+        <p class="ball" id="ball1"></p>
+        <p class="ball" id="ball2"></p>
+        <p class="ball" id="ball3"></p>
+    </div>
+    <script>
+//         function move(ele, target, callback) {
+//             let m = 0;
+//             window.timer = setInterval(() => {
+//                 m += 5;
+//                 ele.style.left = m + 'px';
+//                 if (parseInt(ele.style.left) > target) {
+//                     clearInterval(window.timer);
+//                     ele.style.left = target + 'px';
+//                     callback()
+//                 }
+//             }, 13)
+//         }
+//         move(ball1, 200, function () {
+//             move(ball2, 200, function () {
+//               move(ball3,200,function(){})
+//             })
+//         })
+   
+//    ajax({
+//        sucess:(res)=>{
+//            //省的名字
+//           let res = res.data;
+//           ajax({
+//             url:url,
+//             data:{
+//                 name:res.name
+//                 },
+//             sucess:(res)=>{
+//                cityname = res.name;     
+//             }  
+//           })
+//        }
+//    })
+    </script>
+    <script src="index.js"></script>
+</body>
+
+</html>

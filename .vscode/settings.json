@@ -1,6 +1,5 @@
 {
     "editor.wordWrap": "on",
     "editor.fontSize": 30,
-    "editor.lineNumbers": "off",
     "files.autoSave": "afterDelay"
 }
