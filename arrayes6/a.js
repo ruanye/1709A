@@ -39,20 +39,59 @@
  //cb的4个 参数是对照reduce prev,next,index,array 这4个参数
 
  //作业  封装自己的reduce  
+// Array.prototype.myreduce=function(cb,prev){
+//   for(let i =0;i<this.length;i++){
+//    if(!prev){ //没有prev 
+//       prev = cb(this[i],this[i+1],i,this)
+//       i++;
+//    }else{ //有prev 直接走这里
+//       prev = cb(prev,this[i],i,this)
+//    }
+//   }
+//  return prev 
+// }
 Array.prototype.myreduce=function(cb,prev){
-  for(let i =0;i<this.length-1;i++){
-   if(prev){ 
-      prev = cb(prev,this[i+1],i+1,this)
-   }else{ 
-      prev = cb(this[i],this[i+1],i+1,this)
+   for(let i =0;i<this.length;i++){
+     if(!prev){//第一次进来的时候或者是prev没有传参的时候
+      prev =cb(this[i],this[i+1],i,this)
+      i++ 
+     }else{//第二次进来或者有传prev参数  如果有传值会直接走此方法 所以 i++放在上面   
+      prev = cb(prev,this[i],i,this) 
+     } 
    }
-  }
- return prev 
+   return prev;
 }
-let suma = [1,2,3,4].myreduce((prev,next)=>{
-   
-  return prev+next
+Array.prototype.myMap=function(cb){
+    newary = [];
+   for(let i=0;i<this.length;i++){
+      newary.push(cb(this[i],i,this)) 
+   }
+   return newary
+}
+let n =[1,2,3,4].myMap((item,index)=>{
+   return item*2
 })
+console.log(n)
+
+let n = [1,2,3,4].myreduce((prev,next)=>{
+   return prev+next
+},100)
+console.log(n)
+
+Array.prototype.mymap=function(cb){
+   nw= [];
+   for(let i=0;i<this.length;i++){
+      nw.push(cb(this[i],i,this))
+   }
+   return nw;
+}
+
+
+let suma = [1,2,3,4].myreduce((prev,next,index)=>{
+   console.log(index)
+   return prev+next
+},10)
+console.log(suma,'和')
 
 //find 找到条件为真就返回为真的那一项，不在继续查找 
 let nary = [1,2,3,4,5].find(item=>item>2); // 结果3 
