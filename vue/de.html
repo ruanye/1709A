@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj ={};
+        obj.name = 1;
+        Object.defineProperty(obj,'name',{
+          writable:false,// false 的情况下, 无法修改属性的 value 值 是否可以写入
+          enumerable:false,//是否可枚举
+          configurable:false// 是否可配置
+          })
+          //delete obj.name //在configurable:false的时候 不能被删除
+        // for(key in obj) 枚举 
+    </script>
+</body>
+</html>
