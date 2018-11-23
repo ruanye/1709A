@@ -11,8 +11,8 @@
 //解决回调地狱的问题
 //  $(this).addClass().css({})
     //return this
- //catch 统一处理异常  
-let p = new Promise((resolve,reject)=>{
+ //catch 统一处理异常 
+ let p = new Promise((resolve,reject)=>{
   reject()
 })
 p.then(data=>{ //data 表示成功的原因 
@@ -20,7 +20,7 @@ p.then(data=>{ //data 表示成功的原因
 }).then(data=>{
   console.log(data) 
 }).catch(e=>{
-  console.log(e,'---')
+  // console.log(e,'---')
 })
   
 function move(ele, target){
@@ -49,16 +49,40 @@ function move(ele, target){
 // }).then(dat=>{
 //   return move(ball3,200)
 // })
-//genarote 自己去看一遍 
+//generator 自己去看一遍 
 // async  表示函数里面有异步操作 返回promise  一般都和await 配合使用 await 后面通常跟着promise（也可以跟普通值）
 // await 等待 
-async function m() {
-   await move(ball1,200);
-   await move(ball2,200);
-   await move(ball3,200);
-}
-m().then(data=>{
-  alert('移动完了')
+// async function m() {
+//    await move(ball1,200);
+//    await move(ball2,200);
+//    await move(ball3,200);
+// }
+// m().then(data=>{
+//   alert('移动完了')
+// })
+// Promise.reject('')//直接失败
+// Promise.resolve('')//直接成功
+// Promise.all() //接收由promise组成的数组；promise都成功之后才会走then方法 
+//promise.race() 
+// race 跑  谁跑的快结果就是谁 
+let p1 = new Promise((resolve,reject)=>{
+  console.log(1)
+  setTimeout(()=>{
+    resolve('1')
+  },100)
+})
+let p2 = new Promise((resolve,reject)=>{
+  console.log(2)
+  resolve('2')
+})
+//r1 r2 是解构赋值来拿出来的  [r1,r2] = data 
+Promise.all([p1,p2]).then(([r1,r2])=>{
+   console.log(r1,r2,'all')
+})
+
+//谁付钱快就收谁的  
+Promise.race([p1,p2]).then((data)=>{
+   console.log(data,'race')
 })
 
 
