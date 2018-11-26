@@ -22,7 +22,7 @@
        // 1. 作业 可以看着别人的写observer 
        //vue 的实现原理  通过Object上面的defineProperty 的get 和set 进行数据劫持 ，只是vue用 observer 来深层监控对象，vue 通过compile 把最后的结果编译成dom  
         let obj ={};
-        Object.defineProperty(obj,'name',{
+          Object.defineProperty(obj,'name',{
           get(){ //获取值
                return val
           },
