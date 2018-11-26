@@ -2,7 +2,12 @@
 let http = require('http');
 //nodejs自带的服务器模块 
 let url = require('url');
-//url  解析url路径和路径参数的  
+let s = require('./s.js');
+//url  解析url路径和路径参数的 
+let fs =require('fs') ;
+console.log(fs);
+// 文件处理模块 
+//fs.readFile 读文件     fs.writeFile  写文件
 //localhost:8080?name=1
 //createServer 创建服务器的函数  
 //req  request  请求 
@@ -17,6 +22,7 @@ let url = require('url');
 //req.method  请求方式 都是大写的  我们可以根据请求方式的不同来返回不同的数据
 //请求方式有几种  GET POST DELETE PUT OPTIONS(试探性的请求)
 //req.headers  请求头
+
 http.createServer((req,res)=>{
    let {pathname,query}= url.parse(req.url,true);
    res.setHeader('content-type','text/plain;charset=utf8');
@@ -25,13 +31,15 @@ http.createServer((req,res)=>{
     }
    if(pathname==='/sign'){
      if(req.method==='POST'){
-        //POST请求的处理方式
+        //POST、PUT等有请求体的请求的处理方式
         let str = '';
+        //请求的时候data处理
         req.on('data',chunk=>{
-           str+=chunk;
+           str+=chunk;//chunkbuffer对象
         })
+        //请求结束拿到的data
         req.on('end',()=>{
-          console.log(str)
+          
         })
        return res.end('POST请求')  
      }
